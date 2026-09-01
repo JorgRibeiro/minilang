@@ -35,6 +35,8 @@ comando
     | escrita PV
     | condicional PV
     | enquanto PV
+    | BREAK PV
+    | CONTINUE PV
     ;
 
 atribuicao
@@ -101,6 +103,8 @@ FIMSE       : 'fimse';
 ENQUANTO    : 'enquanto';
 FACA        : 'faca';
 FIMENQUANTO : 'fimenquanto';
+BREAK    : 'break';
+CONTINUE : 'continue';
 
 MAIS      : '+';
 MENOS     : '-';

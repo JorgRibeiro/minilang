@@ -33,7 +33,11 @@ inicio
         x := x + 1;
 
         se x == 15 entao
-            escreva(x);
+            continue;
+        fimse;
+
+        se x == 19 entao
+            break;
         fimse;
     fimenquanto;
 
