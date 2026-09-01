@@ -61,6 +61,7 @@ PROCEDIMENTOS E FUNÇÕES
     {<comando>}
     fim
 
+
 COMANDOS
 
 <comando> ::=
@@ -114,6 +115,7 @@ RETORNO
 
 <comando_retorno> ::=
     retorne <expressao>
+
 
 EXPRESSÕES
 
