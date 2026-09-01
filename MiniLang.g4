@@ -59,7 +59,7 @@ corpoSubrotina
     ;
 
 comando
-    : atribuicao PV
+    : comandoIdentificador PV
     | escrita PV
     | condicional PV
     | enquanto PV
@@ -67,8 +67,17 @@ comando
     | CONTINUE PV
     ;
 
-atribuicao
-    : ID ATRIB expressao
+comandoIdentificador
+    : ID continuacaoIdentificador
+    ;
+
+continuacaoIdentificador
+    : ATRIB expressao
+    | ABRE_PAR listaArgumentos? FECHA_PAR
+    ;
+
+listaArgumentos
+    : expressao (VIRGULA expressao)*
     ;
 
 escrita
@@ -98,7 +107,7 @@ termo
 
 fator
     : NUMERO
-    | ID
+    | ID (ABRE_PAR listaArgumentos? FECHA_PAR)?
     | VERDADEIRO
     | FALSO
     | ABRE_PAR expressaoAritmetica FECHA_PAR

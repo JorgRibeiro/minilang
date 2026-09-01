@@ -61,4 +61,12 @@ inicio
         fimse;
     fimenquanto;
 
+    limpar();
+    mostrar(x);
+
+    x := obterValor();
+    y := soma(x, 20);
+
+    escreva(y);
+
 fim.
