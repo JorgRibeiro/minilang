@@ -5,7 +5,7 @@ var
     ativo : booleano;
 
 inicio
-x:= 10;
-y:= 10;
-ativo := verdadeiro;
+    x := 10 + 5 * 2;
+    y := (x - 4) / 2;
+    ativo := verdadeiro;
 fim.

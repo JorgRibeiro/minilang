@@ -39,12 +39,24 @@ atribuicao
     ;
 
 expressao
-    : NUMERO
+    : expressaoAritmetica
     | VERDADEIRO
     | FALSO
-    | ID
     ;
 
+expressaoAritmetica
+    : termo ((MAIS | MENOS) termo)*
+    ;
+
+termo
+    : fator ((MULT | DIV) fator)*
+    ;
+
+fator
+    : NUMERO
+    | ID
+    | ABRE_PAR expressaoAritmetica FECHA_PAR
+    ;
 
 // =========================
 // LEXER
@@ -58,7 +70,12 @@ VERDADEIRO  : 'verdadeiro';
 FALSO       : 'falso';
 INICIO      : 'inicio';
 FIM         : 'fim';
-
+MAIS      : '+';
+MENOS     : '-';
+MULT      : '*';
+DIV       : '/';
+ABRE_PAR  : '(';
+FECHA_PAR : ')';
 
 PV          : ';';
 DOIS_PONTOS : ':';
