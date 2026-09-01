@@ -1,0 +1,9 @@
+programa TESTE;
+
+funcao valor() : inteiro;
+inicio
+    retorne;
+fim;
+
+inicio
+fim.

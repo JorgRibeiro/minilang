@@ -1,0 +1,10 @@
+programa TESTE;
+
+var
+    x : inteiro;
+
+inicio
+    se x > 10
+        escreva(x);
+    fimse;
+fim.
