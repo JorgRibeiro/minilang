@@ -1,7 +1,7 @@
 VERIFICAÇÃO DA PROPRIEDADE LL(1)
 
 A gramática foi estruturada para permitir análise sintática descendente
-preditiva com apenas um símbolo de lookahead.
+preditiva com apenas um token de lookahead.
 
 1. AUSÊNCIA DE RECURSÃO À ESQUERDA
 
@@ -69,5 +69,60 @@ Os tipos são diferenciados diretamente por:
 inteiro
 booleano
 
-Portanto, as decisões sintáticas da gramática podem ser realizadas
-utilizando um único símbolo de lookahead.
+Dessa forma, a gramática não possui recursão à esquerda, encontra-se
+fatorada nos casos de prefixo comum e suas decisões sintáticas podem
+ser realizadas utilizando um único token de lookahead, caracterizando
+a gramática proposta como LL(1).
+
+4. VERIFICAÇÃO DE CONFLITOS FIRST/FOLLOW
+
+Nas regras com alternativas, os conjuntos de tokens que podem iniciar
+cada alternativa são distintos.
+
+Para <comando>:
+
+FIRST(<comando_identificador>) = { identificador }
+FIRST(<comando_escrita>)       = { escreva }
+FIRST(<comando_condicional>)    = { se }
+FIRST(<comando_enquanto>)       = { enquanto }
+FIRST(break)                    = { break }
+FIRST(continue)                 = { continue }
+FIRST(<comando_retorno>)        = { retorne }
+
+Portanto, não existe conflito FIRST/FIRST entre as alternativas de
+<comando>.
+
+Para <declaracao_subrotina>:
+
+FIRST(<declaracao_procedimento>) = { procedimento }
+FIRST(<declaracao_funcao>)       = { funcao }
+
+Também não há conflito FIRST/FIRST.
+
+Na regra:
+
+<continuacao_identificador> ::=
+      := <expressao>
+    | ( [<lista_argumentos>] )
+
+as alternativas começam pelos tokens distintos ':=' e '('.
+
+Os elementos opcionais também podem ser determinados com um único
+token de lookahead. Por exemplo:
+
+- após '(' em uma declaração de sub-rotina, um identificador indica
+  a presença de parâmetros, enquanto ')' indica lista vazia;
+
+- após '(' em uma chamada, um token que inicia uma expressão indica
+  a presença de argumentos, enquanto ')' indica lista vazia;
+
+- após os comandos do bloco 'entao', 'senao' indica a existência do
+  ramo alternativo, enquanto 'fimse' encerra o comando condicional;
+
+- após as declarações opcionais de variáveis, 'var' inicia a seção de
+  variáveis, enquanto 'procedimento', 'funcao' ou 'inicio' permitem
+  seguir para a próxima parte do bloco.
+
+Assim, nos pontos em que há alternativas, repetições ou elementos
+opcionais, o token seguinte permite decidir unicamente qual produção
+deve ser utilizada.
