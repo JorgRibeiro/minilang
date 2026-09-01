@@ -33,6 +33,7 @@ tipo
 comando
     : atribuicao PV
     | escrita PV
+    | condicional PV
     ;
 
 atribuicao
@@ -42,6 +43,15 @@ atribuicao
 escrita
     : ESCREVA ABRE_PAR expressao FECHA_PAR
     ; 
+
+condicional
+    : SE expressao ENTAO
+        comando*
+        (SENAO
+        comando*
+        )?
+        FIMSE
+    ;
 
 expressao
     : expressaoAritmetica (OPERADOR_RELACIONAL expressaoAritmetica)?
@@ -78,6 +88,10 @@ FALSO       : 'falso';
 INICIO      : 'inicio';
 FIM         : 'fim';
 ESCREVA     : 'escreva';
+SE          : 'se';
+ENTAO       : 'entao';
+SENAO       : 'senao';
+FIMSE       : 'fimse';
 
 MAIS      : '+';
 MENOS     : '-';

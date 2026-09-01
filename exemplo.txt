@@ -13,4 +13,15 @@ inicio
     escreva(100);
     escreva(x + y);
     escreva(ativo);
+
+    se x >= y entao
+        escreva(x);
+    senao
+        escreva(y);
+    fimse;
+
+    se ativo == verdadeiro entao
+        escreva(100);
+    fimse;
+
 fim.
