@@ -1,7 +1,11 @@
 # MiniLang
 
-MiniLang é uma linguagem simplificada desenvolvida para a disciplina de
-Compiladores.
+## Projeto da Segunda VA
+
+**Faculdade:** UFAPE  
+**Professor:** Sérgio Mendonça  
+**Alunos:** Jorge Ribeiro e Clívisson José  
+**Entrega:** 2 de setembro de 2026
 
 O projeto contém uma gramática projetada para ser LL(1) e uma implementação
 da linguagem utilizando ANTLR4.
