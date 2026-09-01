@@ -16,12 +16,12 @@ procedimento mostrar(valor : inteiro);
 
 funcao obterValor() : inteiro;
     inicio
-        escreva(10);
+        retorne 10;
     fim;
 
 funcao soma(a : inteiro, b : inteiro) : inteiro;
     inicio
-        escreva(a + b);
+        retorne a + b;
     fim;
 
 inicio

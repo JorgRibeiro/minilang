@@ -65,6 +65,7 @@ comando
     | enquanto PV
     | BREAK PV
     | CONTINUE PV
+    | retorno PV
     ;
 
 comandoIdentificador
@@ -119,6 +120,10 @@ enquanto
       FIMENQUANTO
     ;
 
+retorno
+    : RETORNE expressao
+    ;
+
 
 // =========================
 // LEXER
@@ -144,6 +149,7 @@ BREAK    : 'break';
 CONTINUE : 'continue';
 PROCEDIMENTO : 'procedimento';
 FUNCAO       : 'funcao';
+RETORNE : 'retorne';
 
 MAIS      : '+';
 MENOS     : '-';
