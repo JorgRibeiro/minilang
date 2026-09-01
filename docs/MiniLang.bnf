@@ -1,0 +1,172 @@
+DESCRIÇÃO BNF DA LINGUAGEM MINILANG
+
+
+PROGRAMA E BLOCO
+
+<programa> ::=
+    programa <identificador> ; <bloco> .
+
+<bloco> ::=
+    [<declaracao_variaveis>]
+    {<declaracao_subrotina>}
+    inicio
+    {<comando>}
+    fim
+
+
+DECLARAÇÃO DE VARIÁVEIS
+
+<declaracao_variaveis> ::=
+    var
+    <declaracao_variavel>
+    {<declaracao_variavel>}
+
+<declaracao_variavel> ::=
+    <lista_identificadores> : <tipo> ;
+
+<lista_identificadores> ::=
+    <identificador> {, <identificador>}
+
+<tipo> ::=
+    inteiro
+    | booleano
+
+
+PROCEDIMENTOS E FUNÇÕES
+
+<declaracao_subrotina> ::=
+    <declaracao_procedimento>
+    | <declaracao_funcao>
+
+<declaracao_procedimento> ::=
+    procedimento <identificador>
+    ( [<lista_parametros>] ) ;
+    <corpo_subrotina> ;
+
+<declaracao_funcao> ::=
+    funcao <identificador>
+    ( [<lista_parametros>] )
+    : <tipo> ;
+    <corpo_subrotina> ;
+
+<lista_parametros> ::=
+    <parametro> {, <parametro>}
+
+<parametro> ::=
+    <identificador> : <tipo>
+
+<corpo_subrotina> ::=
+    [<declaracao_variaveis>]
+    inicio
+    {<comando>}
+    fim
+
+COMANDOS
+
+<comando> ::=
+      <comando_identificador> ;
+    | <comando_escrita> ;
+    | <comando_condicional> ;
+    | <comando_enquanto> ;
+    | break ;
+    | continue ;
+    | <comando_retorno> ;
+
+
+ATRIBUIÇÃO E CHAMADA
+
+<comando_identificador> ::=
+    <identificador> <continuacao_identificador>
+
+<continuacao_identificador> ::=
+      := <expressao>
+    | ( [<lista_argumentos>] )
+
+<lista_argumentos> ::=
+    <expressao> {, <expressao>}
+
+
+IMPRESSÃO
+
+<comando_escrita> ::=
+    escreva ( <expressao> )
+
+
+CONDICIONAL
+
+<comando_condicional> ::=
+    se <expressao> entao
+        {<comando>}
+    [senao
+        {<comando>}]
+    fimse
+
+
+LAÇO
+
+<comando_enquanto> ::=
+    enquanto <expressao> faca
+        {<comando>}
+    fimenquanto
+
+
+RETORNO
+
+<comando_retorno> ::=
+    retorne <expressao>
+
+EXPRESSÕES
+
+<expressao> ::=
+    <expressao_aritmetica>
+    [<operador_relacional> <expressao_aritmetica>]
+
+<operador_relacional> ::=
+      ==
+    | !=
+    | >=
+    | <=
+    | >
+    | <
+
+<expressao_aritmetica> ::=
+    <termo>
+    {<operador_aditivo> <termo>}
+
+<operador_aditivo> ::=
+      +
+    | -
+
+<termo> ::=
+    <fator>
+    {<operador_multiplicativo> <fator>}
+
+<operador_multiplicativo> ::=
+      *
+    | /
+
+<fator> ::=
+      <numero>
+    | <identificador> [ ( [<lista_argumentos>] ) ]
+    | verdadeiro
+    | falso
+    | ( <expressao> )
+
+
+NÚMEROS E IDENTIFICADORES
+
+<numero> ::=
+    <digito> {<digito>}
+
+<identificador> ::=
+    <letra> {<letra> | <digito> | _}
+
+<digito> ::=
+      0 | 1 | 2 | 3 | 4
+    | 5 | 6 | 7 | 8 | 9
+
+<letra> ::=
+      a | b | c | d | e | f | g | h | i | j | k | l | m
+    | n | o | p | q | r | s | t | u | v | w | x | y | z
+    | A | B | C | D | E | F | G | H | I | J | K | L | M
+    | N | O | P | Q | R | S | T | U | V | W | X | Y | Z
