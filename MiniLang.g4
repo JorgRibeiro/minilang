@@ -10,7 +10,7 @@ programa
     ;
 
 bloco
-    : declaracaoVariaveis? INICIO comando* FIM
+    : declaracaoVariaveis? declaracaoSubrotina* INICIO comando* FIM
     ;
 
 declaracaoVariaveis
@@ -28,6 +28,34 @@ listaIdentificadores
 tipo
     : INTEIRO
     | BOOLEANO
+    ;
+
+declaracaoSubrotina
+    : declaracaoProcedimento
+    | declaracaoFuncao
+    ;
+
+declaracaoProcedimento
+    : PROCEDIMENTO ID ABRE_PAR listaParametros? FECHA_PAR PV
+      corpoSubrotina PV
+    ;
+
+declaracaoFuncao
+    : FUNCAO ID ABRE_PAR listaParametros? FECHA_PAR
+      DOIS_PONTOS tipo PV
+      corpoSubrotina PV
+    ;
+
+listaParametros
+    : parametro(VIRGULA parametro)*
+    ;
+
+parametro
+    : ID DOIS_PONTOS tipo
+    ;
+
+corpoSubrotina
+    : declaracaoVariaveis? INICIO comando* FIM
     ;
 
 comando
@@ -105,6 +133,8 @@ FACA        : 'faca';
 FIMENQUANTO : 'fimenquanto';
 BREAK    : 'break';
 CONTINUE : 'continue';
+PROCEDIMENTO : 'procedimento';
+FUNCAO       : 'funcao';
 
 MAIS      : '+';
 MENOS     : '-';

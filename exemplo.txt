@@ -4,6 +4,26 @@ var
     x, y, z : inteiro;
     ativo : booleano;
 
+procedimento limpar();
+    inicio
+        escreva(0);
+    fim;
+
+procedimento mostrar(valor : inteiro);
+    inicio
+        escreva(valor);
+    fim;
+
+funcao obterValor() : inteiro;
+    inicio
+        escreva(10);
+    fim;
+
+funcao soma(a : inteiro, b : inteiro) : inteiro;
+    inicio
+        escreva(a + b);
+    fim;
+
 inicio
     x := 10 + 5 * 2;
     y := (x - 4) / 2;
