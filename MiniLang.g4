@@ -10,7 +10,7 @@ programa
     ;
 
 bloco
-    : declaracaoVariaveis? INICIO FIM
+    : declaracaoVariaveis? INICIO comando* FIM
     ;
 
 declaracaoVariaveis
@@ -30,22 +30,46 @@ tipo
     | BOOLEANO
     ;
 
+comando
+    : atribuicao PV
+    ;
+
+atribuicao
+    : ID ATRIB expressao
+    ;
+
+expressao
+    : NUMERO
+    | VERDADEIRO
+    | FALSO
+    | ID
+    ;
+
 
 // =========================
 // LEXER
 // =========================
 
-PROGRAMA : 'programa';
-VAR      : 'var';
-INTEIRO  : 'inteiro';
-BOOLEANO : 'booleano';
-INICIO   : 'inicio';
-FIM      : 'fim';
+PROGRAMA    : 'programa';
+VAR         : 'var';
+INTEIRO     : 'inteiro';
+BOOLEANO    : 'booleano';
+VERDADEIRO  : 'verdadeiro';
+FALSO       : 'falso';
+INICIO      : 'inicio';
+FIM         : 'fim';
+
 
 PV          : ';';
 DOIS_PONTOS : ':';
 VIRGULA     : ',';
 PONTO       : '.';
+ATRIB       : ':=';
+
+
+NUMERO
+    : [0-9]+
+    ;
 
 ID
     : [a-zA-Z] [a-zA-Z0-9_]*
