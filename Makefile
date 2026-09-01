@@ -6,7 +6,7 @@ GRAMMAR_FILE := $(GRAMMAR).g4
 START_RULE := programa
 
 BUILD_DIR := .antlr
-EXAMPLE := exemplo.txt
+EXAMPLE ?= exemplo.txt
 
 .PHONY: all generate compile test tokens gui clean
 
