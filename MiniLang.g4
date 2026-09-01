@@ -34,6 +34,7 @@ comando
     : atribuicao PV
     | escrita PV
     | condicional PV
+    | enquanto PV
     ;
 
 atribuicao
@@ -55,8 +56,6 @@ condicional
 
 expressao
     : expressaoAritmetica (OPERADOR_RELACIONAL expressaoAritmetica)?
-    | VERDADEIRO
-    | FALSO
     ;
 
 expressaoAritmetica
@@ -70,9 +69,16 @@ termo
 fator
     : NUMERO
     | ID
+    | VERDADEIRO
+    | FALSO
     | ABRE_PAR expressaoAritmetica FECHA_PAR
     ;
 
+enquanto
+    : ENQUANTO expressao FACA
+        comando*
+      FIMENQUANTO
+    ;
 
 
 // =========================
@@ -92,6 +98,9 @@ SE          : 'se';
 ENTAO       : 'entao';
 SENAO       : 'senao';
 FIMSE       : 'fimse';
+ENQUANTO    : 'enquanto';
+FACA        : 'faca';
+FIMENQUANTO : 'fimenquanto';
 
 MAIS      : '+';
 MENOS     : '-';

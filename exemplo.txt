@@ -24,4 +24,17 @@ inicio
         escreva(100);
     fimse;
 
+    enquanto x < 20 faca
+        x := x + 1;
+        escreva(x);
+    fimenquanto;
+
+    enquanto x < y faca
+        x := x + 1;
+
+        se x == 15 entao
+            escreva(x);
+        fimse;
+    fimenquanto;
+
 fim.
