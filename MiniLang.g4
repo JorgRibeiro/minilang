@@ -111,7 +111,7 @@ fator
     | ID (ABRE_PAR listaArgumentos? FECHA_PAR)?
     | VERDADEIRO
     | FALSO
-    | ABRE_PAR expressaoAritmetica FECHA_PAR
+    | ABRE_PAR expressao FECHA_PAR
     ;
 
 enquanto

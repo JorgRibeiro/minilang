@@ -69,4 +69,6 @@ inicio
 
     escreva(y);
 
+    ativo := (x > y);
+
 fim.
