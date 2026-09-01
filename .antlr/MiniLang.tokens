@@ -1,0 +1,12 @@
+PROGRAMA=1
+INICIO=2
+FIM=3
+PV=4
+PONTO=5
+ID=6
+WS=7
+'programa'=1
+'inicio'=2
+'fim'=3
+';'=4
+'.'=5
