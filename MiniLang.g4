@@ -39,7 +39,7 @@ atribuicao
     ;
 
 expressao
-    : expressaoAritmetica
+    : expressaoAritmetica (OPERADOR_RELACIONAL expressaoAritmetica)?
     | VERDADEIRO
     | FALSO
     ;
@@ -70,12 +70,23 @@ VERDADEIRO  : 'verdadeiro';
 FALSO       : 'falso';
 INICIO      : 'inicio';
 FIM         : 'fim';
+
+
 MAIS      : '+';
 MENOS     : '-';
 MULT      : '*';
 DIV       : '/';
 ABRE_PAR  : '(';
 FECHA_PAR : ')';
+OPERADOR_RELACIONAL
+    : '=='
+    | '!='
+    | '>='
+    | '<='
+    | '>'
+    | '<'
+    ;
+
 
 PV          : ';';
 DOIS_PONTOS : ':';
