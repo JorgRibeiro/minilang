@@ -19,6 +19,7 @@ generate:
 
 compile: generate
 	javac -cp "$(ANTLR_JAR)" -d $(BUILD_DIR) $(BUILD_DIR)/*.java
+	javac -cp "$(ANTLR_JAR):$(BUILD_DIR)" -d $(BUILD_DIR) src/Main.java
 
 test: compile
 	java -cp "$(ANTLR_JAR):$(BUILD_DIR)" org.antlr.v4.gui.TestRig \
@@ -34,3 +35,8 @@ gui: compile
 
 clean:
 	rm -rf $(BUILD_DIR)
+
+FILE ?= exemplo.txt
+
+validate: compile
+	java -cp "$(ANTLR_JAR):$(BUILD_DIR)" Main $(FILE)
