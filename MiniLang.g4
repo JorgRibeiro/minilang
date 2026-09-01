@@ -32,11 +32,16 @@ tipo
 
 comando
     : atribuicao PV
+    | escrita PV
     ;
 
 atribuicao
     : ID ATRIB expressao
     ;
+
+escrita
+    : ESCREVA ABRE_PAR expressao FECHA_PAR
+    ; 
 
 expressao
     : expressaoAritmetica (OPERADOR_RELACIONAL expressaoAritmetica)?
@@ -58,6 +63,8 @@ fator
     | ABRE_PAR expressaoAritmetica FECHA_PAR
     ;
 
+
+
 // =========================
 // LEXER
 // =========================
@@ -70,7 +77,7 @@ VERDADEIRO  : 'verdadeiro';
 FALSO       : 'falso';
 INICIO      : 'inicio';
 FIM         : 'fim';
-
+ESCREVA     : 'escreva';
 
 MAIS      : '+';
 MENOS     : '-';

@@ -8,4 +8,9 @@ inicio
     x := 10 + 5 * 2;
     y := (x - 4) / 2;
     ativo := x >= y;
+
+    escreva(x);
+    escreva(100);
+    escreva(x + y);
+    escreva(ativo);
 fim.
