@@ -1,0 +1,8 @@
+programa TESTE;
+
+var
+    x : inteiro;
+
+inicio
+    x := 10 + 20 * 30;
+fim.
