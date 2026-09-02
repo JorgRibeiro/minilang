@@ -6,9 +6,9 @@ GRAMMAR_FILE := $(GRAMMAR).g4
 START_RULE := programa
 
 BUILD_DIR := .antlr
-EXAMPLE ?= exemplo.txt
+FILE ?= exemplo.txt
 
-.PHONY: all generate compile test tokens gui clean
+.PHONY: all generate compile test tokens gui validate clean
 
 all: compile
 
@@ -23,20 +23,18 @@ compile: generate
 
 test: compile
 	java -cp "$(ANTLR_JAR):$(BUILD_DIR)" org.antlr.v4.gui.TestRig \
-		$(GRAMMAR) $(START_RULE) -tree < $(EXAMPLE)
+		$(GRAMMAR) $(START_RULE) -tree < "$(FILE)"
 
 tokens: compile
 	java -cp "$(ANTLR_JAR):$(BUILD_DIR)" org.antlr.v4.gui.TestRig \
-		$(GRAMMAR) $(START_RULE) -tokens < $(EXAMPLE)
+		$(GRAMMAR) $(START_RULE) -tokens < "$(FILE)"
 
 gui: compile
 	java -cp "$(ANTLR_JAR):$(BUILD_DIR)" org.antlr.v4.gui.TestRig \
-		$(GRAMMAR) $(START_RULE) -gui < $(EXAMPLE)
+		$(GRAMMAR) $(START_RULE) -gui < "$(FILE)"
+
+validate: compile
+	java -cp "$(ANTLR_JAR):$(BUILD_DIR)" Main "$(FILE)"
 
 clean:
 	rm -rf $(BUILD_DIR)
-
-FILE ?= exemplo.txt
-
-validate: compile
-	java -cp "$(ANTLR_JAR):$(BUILD_DIR)" Main $(FILE)

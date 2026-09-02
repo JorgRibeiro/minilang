@@ -48,7 +48,32 @@ Foi desenvolvido utilizando ANTLR 4.13.2.
 
 ## Executando
 
-Para gerar o lexer/parser, compilar e visualizar a árvore sintática:
+Para gerar o lexer/parser, compilar e visualizar a árvore sintática no
+terminal usando o exemplo padrão:
 
 ```bash
 make test
+```
+
+Você também pode criar seu próprio arquivo, por exemplo `meu_programa.txt`, e
+abrir a árvore sintática dele em uma janela gráfica:
+
+```bash
+make gui FILE=meu_programa.txt
+```
+
+O arquivo pode estar em outra pasta; nesse caso, informe o caminho:
+
+```bash
+make gui FILE=examples/meu_programa.txt
+```
+
+Outros comandos que aceitam `FILE`:
+
+```bash
+make validate FILE=meu_programa.txt  # informa se a sintaxe é válida
+make test FILE=meu_programa.txt      # mostra a árvore no terminal
+make tokens FILE=meu_programa.txt    # mostra os tokens encontrados
+```
+
+Se `FILE` não for informado, o projeto utiliza `exemplo.txt`.
